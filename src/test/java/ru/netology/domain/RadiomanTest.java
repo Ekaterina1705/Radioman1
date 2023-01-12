@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadiomanTest {
     Radioman radio = new Radioman();
+
     @Test
     public void shouldChangeStation() {
         radio.setCurrentStation(5);

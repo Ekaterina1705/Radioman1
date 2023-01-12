@@ -1,4 +1,5 @@
 package ru.netology.domain;
+
 public class Radioman {
     private int currentStation;
     private int currentVolume;
