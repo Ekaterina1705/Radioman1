@@ -5,116 +5,91 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RadiomanTest {
-
+public class RadiomanTest {
+    Radioman radio = new Radioman();
     @Test
     public void shouldChangeStation() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        int expected = 5;
-        int actual = radio.setCurrentStation(5);
-        Assertions.assertEquals(expected, actual);
+        radio.setCurrentStation(5);
+        Assertions.assertEquals(5, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldSetStationUnderMinStation() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void shouldChangeStation1() {
+        radio.setCurrentStation(6);
+        Assertions.assertEquals(6, radio.getCurrentStation());
+    }
 
-        radio.setCurrentStation(-1);
+    @Test
+    public void shouldChangeStation2() {
+        radio.setCurrentStation(-2);
         Assertions.assertEquals(0, radio.getCurrentStation());
     }
 
-    @Test
-    public void shouldSetStationOverMaxStation() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentStation(10);
-        Assertions.assertEquals(0, radio.getCurrentStation());
-    }
 
     @Test
-    public void shouldNextStation() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void shouldChangeVolume() {
+        radio.setCurrentVolume(5);
+        Assertions.assertEquals(5, radio.getCurrentVolume());
+    }
+
+
+    @Test
+    public void shouldOverMaxVolume1() {
+        radio.setCurrentVolume(10);
+        Assertions.assertEquals(10, radio.getCurrentVolume());
+    }
+
+
+    @Test
+    public void NextStation() {
         radio.setCurrentStation(6);
         radio.nextStation();
         Assertions.assertEquals(7, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldOverMaxStation1() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void NextStation1() {
         radio.setCurrentStation(9);
         radio.nextStation();
         Assertions.assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldOverMaxStation2() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentStation(10);
+    public void NextStation2() {
+        radio.setCurrentStation(8);
         radio.nextStation();
-        Assertions.assertEquals(1, radio.getCurrentStation());
+        Assertions.assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldPrevStation() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void PrevStation() {
         radio.setCurrentStation(4);
-        radio.previousStation();
+        radio.prevStation();
         Assertions.assertEquals(3, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldBelowMinStation1() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void PrevStation1() {
         radio.setCurrentStation(0);
-        radio.previousStation();
+        radio.prevStation();
         Assertions.assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
-    public void shouldBelowMinStation2() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentStation(-1);
-        radio.previousStation();
-        Assertions.assertEquals(9, radio.getCurrentStation());
+    public void currentVolume() {
+        radio.setCurrentVolume(-1);
+        Assertions.assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
-    public void shouldChangeVolume() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setCurrentVolume(5);
-        Assertions.assertEquals(5, radio.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldIncreaseVolume() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentVolume(9);
-        radio.increaseVolume();
-        Assertions.assertEquals(10, radio.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldOverMaxVolume1() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentVolume(10);
-        radio.increaseVolume();
-        Assertions.assertEquals(10, radio.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldOverMaxVolume2() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
+    public void currentVolume1() {
         radio.setCurrentVolume(11);
-        radio.increaseVolume();
-        Assertions.assertEquals(1, radio.getCurrentVolume());
+        Assertions.assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
-    public void shouldDecreaseVolume() {
-        ru.netology.domain.Radioman radio = new ru.netology.domain.Radioman();
-        radio.setCurrentVolume(6);
-        radio.decreaseVolume();
-        Assertions.assertEquals(5, radio.getCurrentVolume());
+    public void shouldCurrentStation() {
+        radio.setCurrentStation(10);
+        Assertions.assertEquals(0, radio.getCurrentStation());
     }
 }
