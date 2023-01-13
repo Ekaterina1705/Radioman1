@@ -3,9 +3,20 @@ package ru.netology.domain;
 public class Radioman {
     private int currentStation;
     private int currentVolume;
+    private int maxStation;
+
+    public Radioman() {
+        maxStation = 9;
+
+    }
+
+    public Radioman(int stationsCountry) {
+        maxStation = stationsCountry - 1;
+
+    }
 
     public void nextStation() {
-        if (currentStation != 9) {
+        if (currentStation != maxStation) {
             currentStation++;
         } else {
             currentStation = 0;
@@ -16,7 +27,7 @@ public class Radioman {
         if (currentStation != 0) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
@@ -28,7 +39,7 @@ public class Radioman {
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -42,7 +53,7 @@ public class Radioman {
         if (currentVolume < 0) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
         this.currentVolume = currentVolume;
